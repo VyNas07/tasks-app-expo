@@ -25,6 +25,9 @@ export default function App() {
       <View style={styles.container}>
         <Text style={styles.header}>Tarefas</Text>
 
+        {/* mostra quantas tarefas tem no momento */}
+        <Text style={styles.taskCount}>{tasks.length} tarefas</Text>
+
         <View style={styles.top}>
           <TextInput
             style={styles.input}
@@ -77,6 +80,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
+  },
+  taskCount: {
+    textAlign: 'center',
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 8,
   },
   top: {
     marginTop: 16,
