@@ -41,6 +41,8 @@ export default function App() {
             placeholder="Adicione uma tarefa..."
             value={text}
             onChangeText={(val) => setText(val)}
+            maxLength={100}
+            returnKeyType="done"
           />
 
           <TouchableOpacity
