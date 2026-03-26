@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView, Platform, StatusBar as RNStatusBar } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, SafeAreaView, Platform, StatusBar as RNStatusBar } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import TaskList from './src/components/TaskList';
 import { addTask, deleteTask, getAllTasks, updateTask, TaskItem } from './src/utils/handle-api';
@@ -23,6 +23,13 @@ export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
+        {/* img de cabeçalho */}
+        <Image
+          source={require('./assets/task-app-banner.png')}
+          style={styles.banner}
+          resizeMode="contain"
+        />
+
         <Text style={styles.header}>Tarefas</Text>
 
         {/* mostra quantas tarefas tem no momento */}
@@ -74,6 +81,11 @@ const styles = StyleSheet.create({
     width: '100%',
     alignSelf: 'center',
     paddingHorizontal: 16,
+  },
+  banner: {
+    width: '100%',
+    height: 120,
+    marginTop: 16,
   },
   header: {
     marginTop: 16,
