@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, SafeAreaView, Platform, StatusBar as RNStatusBar } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Button, SafeAreaView, Platform, StatusBar as RNStatusBar } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import TaskList from './src/components/TaskList';
 import { addTask, deleteTask, getAllTasks, updateTask, TaskItem } from './src/utils/handle-api';
@@ -18,6 +18,11 @@ export default function App() {
     setIsUpdating(true);
     setText(text);
     setTaskId(_id);
+  };
+
+  // apaga todas as tarefas uma por uma
+  const deleteAllTasks = () => {
+    tasks.forEach((task) => deleteTask(task._id, setTasks));
   };
 
   return (
@@ -59,12 +64,14 @@ export default function App() {
           </TouchableOpacity>
         </View>
 
-        {/* Substituí o ScrollView + map() pelo TaskList com FlatList */}
         <TaskList
           tasks={tasks}
           updateMode={updateMode}
           deleteTask={(id) => deleteTask(id, setTasks)}
         />
+
+        {/* botão nativo para apagar todas as tarefas */}
+        <Button title="Apagar tudo" color="red" onPress={deleteAllTasks} />
       </View>
       <StatusBar style="auto" />
     </SafeAreaView>
