@@ -35,10 +35,11 @@ export default function App() {
           resizeMode="contain"
         />
 
-        <Text style={styles.header}>Tarefas</Text>
-
-        {/* mostra quantas tarefas tem no momento */}
-        <Text style={styles.taskCount}>{tasks.length} tarefas</Text>
+        {/* agrupa o título e o contador centralizados */}
+        <View style={styles.titleArea}>
+          <Text style={styles.header}>Tarefas</Text>
+          <Text style={styles.taskCount}>{tasks.length} tarefas</Text>
+        </View>
 
         <View style={styles.top}>
           <TextInput
@@ -71,7 +72,9 @@ export default function App() {
         />
 
         {/* botão nativo para apagar todas as tarefas */}
-        <Button title="Apagar tudo" color="red" onPress={deleteAllTasks} />
+        <View style={styles.deleteArea}>
+          <Button title="Apagar tudo" color="red" onPress={deleteAllTasks} />
+        </View>
       </View>
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -95,6 +98,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 120,
     marginTop: 16,
+  },
+  titleArea: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 8,
   },
   header: {
     marginTop: 16,
@@ -135,5 +143,8 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  deleteArea: {
+    marginVertical: 16,
   },
 });
